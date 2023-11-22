@@ -41,4 +41,9 @@ public class Trabajador extends Persona {
 		this.afp = afp;
 	}
 
+	public String toString(){
+
+		return getNombre();
+	}
+
 }

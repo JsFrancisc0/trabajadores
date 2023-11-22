@@ -81,7 +81,6 @@ public class Ventana extends JFrame implements ActionListener {
         this.setVisible(true);
     }
 
-
     @Override
     public void actionPerformed(ActionEvent e) {
 
@@ -93,11 +92,22 @@ public class Ventana extends JFrame implements ActionListener {
         }
 
         if (e.getSource()==botonBuscar){
-            System.out.println(empresa.getTrabajadores());
+            if ((empresa.trabajadorExiste(textFieldRut.getText())==false)){
+                JOptionPane.showMessageDialog(null,"TRABAJADOR NO ENCONTRADO!","Error", JOptionPane.ERROR_MESSAGE);
+            }else {
+                JOptionPane.showMessageDialog(null, "Trabajador encontrado :"+(empresa.buscarTrabajador(textFieldRut.getText()).toString()),"Busqueda",JOptionPane.INFORMATION_MESSAGE);
+            }
         }
 
         if (e.getSource()==botonEliminar){
-            empresa.eliminarTrabajador(textFieldRut.getText());
+
+            if ((empresa.trabajadorExiste(textFieldRut.getText())==false)){
+                JOptionPane.showMessageDialog(null,"TRABAJADOR NO ENCONTRADO!","Error", JOptionPane.ERROR_MESSAGE);
+            }else {
+                empresa.eliminarTrabajador(textFieldRut.getText());
+                JOptionPane.showMessageDialog(null, "El trabajador ha sido eliminado","Eliminar Trabajador",JOptionPane.WARNING_MESSAGE);
+            }
+
         }
 
     }

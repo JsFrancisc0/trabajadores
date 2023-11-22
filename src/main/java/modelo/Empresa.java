@@ -62,4 +62,17 @@ public class Empresa {
 		return trabajadorEncontrado;
 	}
 
+	public boolean trabajadorExiste(String rut){
+
+		boolean existe = false;
+
+		for (Trabajador i : getTrabajadores()){
+			if (i.getRut().equalsIgnoreCase(rut)){
+				existe = true;
+			}
+		}
+
+		return existe;
+	}
+
 }
