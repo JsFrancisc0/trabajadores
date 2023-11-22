@@ -1,5 +1,8 @@
 package ventana;
 
+import modelo.Empresa;
+import modelo.Trabajador;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -7,13 +10,16 @@ import java.awt.event.ActionListener;
 
 public class Ventana extends JFrame implements ActionListener {
 
+    Empresa empresa;
+
     JTextField textFieldNombre, textFieldApellido, textFieldRut, textFieldIsapre, textFieldAfp;
 
     JButton botonAgregar, botonBuscar, botonEliminar;
 
 
-    public Ventana(){
+    public Ventana(Empresa empresa){
 
+        this.empresa = empresa;
 
         textFieldNombre = new JTextField("Nombre");
         textFieldNombre.setFont(new Font("Comic Sans MS",Font.PLAIN,25));
@@ -54,7 +60,6 @@ public class Ventana extends JFrame implements ActionListener {
 
         botonEliminar = new JButton("Eliminar");
         botonEliminar.setFont(new Font("Comic Sans MS",Font.BOLD,15));
-        botonEliminar.setBackground(new Color(210,50,50));
         botonEliminar.setBounds(480,360,120,50);
         botonEliminar.addActionListener(this);
 
@@ -79,6 +84,21 @@ public class Ventana extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+
+        if(e.getSource()==botonAgregar){
+
+            Trabajador trabajador = new Trabajador(textFieldNombre.getText(), textFieldApellido.getText(), textFieldRut.getText(), textFieldIsapre.getText(), textFieldAfp.getText());
+            empresa.agregarTrabajador(trabajador);
+
+        }
+
+        if (e.getSource()==botonBuscar){
+            System.out.println(empresa.getTrabajadores());
+        }
+
+        if (e.getSource()==botonEliminar){
+            empresa.eliminarTrabajador(textFieldRut.getText());
+        }
 
     }
 }

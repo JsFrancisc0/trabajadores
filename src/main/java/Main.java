@@ -1,10 +1,13 @@
+import modelo.Empresa;
 import ventana.Ventana;
 
 public class Main {
 
     public static void main (String[] args){
 
-        Ventana ventana = new Ventana();
+        Empresa empresa = new Empresa();
+
+        Ventana ventana = new Ventana(empresa);
 
     }
 

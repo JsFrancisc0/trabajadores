@@ -1,12 +1,13 @@
 package modelo;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class Empresa {
 
 	private ArrayList<Trabajador> trabajadores;
 
-	Empresa(){
+	public Empresa(){
 		trabajadores = new ArrayList<>();
 	}
 
@@ -27,17 +28,38 @@ public class Empresa {
 	 * @param trabajador
 	 */
 	public void agregarTrabajador(Trabajador trabajador) {
-		// TODO - implement modelo.Empresa.agregarTrabajador
-		throw new UnsupportedOperationException();
+
+		trabajadores.add(trabajador);
 	}
 
 	/**
 	 * 
-	 * @param nombre
+	 * @param rut
 	 */
-	public void eliminarTrabajador(String nombre) {
-		// TODO - implement modelo.Empresa.eliminarTrabajador
-		throw new UnsupportedOperationException();
+	public void eliminarTrabajador(String rut) {
+
+		Iterator<Trabajador> iterator = getTrabajadores().iterator();
+
+		while (iterator.hasNext()) {
+			Trabajador trabajador = iterator.next();
+			if (trabajador.getRut().equalsIgnoreCase(rut)) {
+				iterator.remove();
+			}
+		}
+
+	}
+
+	public Trabajador buscarTrabajador(String rut){
+
+		Trabajador trabajadorEncontrado = new Trabajador();
+
+		for (Trabajador i : getTrabajadores()){
+			if (i.getRut().equalsIgnoreCase(rut)){
+				trabajadorEncontrado = i;
+			}
+		}
+
+		return trabajadorEncontrado;
 	}
 
 }

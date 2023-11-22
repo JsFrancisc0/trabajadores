@@ -1,9 +1,21 @@
 package modelo;
 
-public class Trabajador {
+public class Trabajador extends Persona {
 
 	private String isapre;
 	private String afp;
+
+	public Trabajador(String nombre, String apellido, String rut, String isapre, String afp){
+
+		setNombre(nombre);
+		setApellido(apellido);
+		setRut(rut);
+		setIsapre(isapre);
+		setAfp(afp);
+
+	}
+
+	public Trabajador(){}
 
 	public String getIsapre() {
 		return this.isapre;
