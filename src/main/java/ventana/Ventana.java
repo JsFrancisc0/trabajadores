@@ -86,6 +86,15 @@ public class Ventana extends JFrame implements ActionListener {
 
         if(e.getSource()==botonAgregar){
 
+            if ((empresa.trabajadorExiste(textFieldRut.getText())==false)){
+
+                Trabajador trabajador = new Trabajador(textFieldNombre.getText(), textFieldApellido.getText(), textFieldRut.getText(), textFieldIsapre.getText(), textFieldAfp.getText());
+                empresa.agregarTrabajador(trabajador);
+
+            }else {
+                JOptionPane.showMessageDialog(null, "ESTE TRABAJADOR YA EXISTE!!?","Error critico",JOptionPane.ERROR_MESSAGE);
+            }
+
             Trabajador trabajador = new Trabajador(textFieldNombre.getText(), textFieldApellido.getText(), textFieldRut.getText(), textFieldIsapre.getText(), textFieldAfp.getText());
             empresa.agregarTrabajador(trabajador);
 
@@ -93,7 +102,7 @@ public class Ventana extends JFrame implements ActionListener {
 
         if (e.getSource()==botonBuscar){
             if ((empresa.trabajadorExiste(textFieldRut.getText())==false)){
-                JOptionPane.showMessageDialog(null,"TRABAJADOR NO ENCONTRADO!","Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null,"TRABAJADOR NO ENCONTRADO!!!","Error", JOptionPane.ERROR_MESSAGE);
             }else {
                 JOptionPane.showMessageDialog(null, "Trabajador encontrado :"+(empresa.buscarTrabajador(textFieldRut.getText()).toString()),"Busqueda",JOptionPane.INFORMATION_MESSAGE);
             }
