@@ -101,21 +101,46 @@ public class Ventana extends JFrame implements ActionListener {
         }
 
         if (e.getSource()==botonBuscar){
+
+            String rutTrabajador = JOptionPane.showInputDialog("Ingrese el rut del trabajador");
+
+            if ((empresa.trabajadorExiste(rutTrabajador)==false)){
+                JOptionPane.showMessageDialog(null,"TRABAJADOR NO ENCONTRADO!!!","Error", JOptionPane.ERROR_MESSAGE);
+            }else {
+
+                String[] opciones = {"OK", "Eliminar Trabajador"};
+                int eliminar = JOptionPane.showOptionDialog(null,(empresa.buscarTrabajador(rutTrabajador)).mostrarDatos(),"Informacion del trabajador", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE, null, opciones, 0);
+
+                if (eliminar==1){
+
+                    empresa.eliminarTrabajador(rutTrabajador);
+                    JOptionPane.showMessageDialog(null, "El trabajador ha sido eliminado","Eliminar Trabajador",JOptionPane.WARNING_MESSAGE);
+
+                }
+            }
+
+
+
+
+            /*
+
             if ((empresa.trabajadorExiste(textFieldRut.getText())==false)){
                 JOptionPane.showMessageDialog(null,"TRABAJADOR NO ENCONTRADO!!!","Error", JOptionPane.ERROR_MESSAGE);
             }else {
                 JOptionPane.showMessageDialog(null, "Trabajador encontrado :"+(empresa.buscarTrabajador(textFieldRut.getText()).toString()),"Busqueda",JOptionPane.INFORMATION_MESSAGE);
-            }
+            }*/
         }
 
         if (e.getSource()==botonEliminar){
+
+            /*
 
             if ((empresa.trabajadorExiste(textFieldRut.getText())==false)){
                 JOptionPane.showMessageDialog(null,"TRABAJADOR NO ENCONTRADO!","Error", JOptionPane.ERROR_MESSAGE);
             }else {
                 empresa.eliminarTrabajador(textFieldRut.getText());
                 JOptionPane.showMessageDialog(null, "El trabajador ha sido eliminado","Eliminar Trabajador",JOptionPane.WARNING_MESSAGE);
-            }
+            }*/
 
         }
 

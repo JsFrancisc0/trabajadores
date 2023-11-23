@@ -41,6 +41,10 @@ public class Trabajador extends Persona {
 		this.afp = afp;
 	}
 
+	public String mostrarDatos(){
+		return "Nombre: "+getNombre()+"\nApellido: "+getApellido()+"\nrut: "+getRut()+"\nIsapre: "+getIsapre()+"\nAfp: "+getAfp();
+	}
+
 	public String toString(){
 
 		return getNombre();
